@@ -10,6 +10,7 @@ import avatar1 from 'assets/images/avatar.svg'
 import avatar2 from 'assets/images/avatar2.svg'
 import ethDarkIcon from 'assets/icons/eth-dark.svg'
 import Eth from 'components/Eth';
+import Creator from 'components/Creator';
 
 import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a 
@@ -129,6 +130,29 @@ const AppWrapper = styled.div`
             line-height: 31px;
         }
     }
+
+    .creator {
+        padding: 24px;
+        border-radius: 16px;
+        background-color: #fff;
+        .creator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: -18px;
+            .creator-title{
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 31px;
+            }
+            .creator-see-all{
+                color: #747475;
+            }
+        }
+        ol::marker{
+            color: hotpink;
+        }
+    }
 `
 const StyledCardAuction = styled.div`
     .auction-item{
@@ -190,16 +214,7 @@ const StyledCardAuction = styled.div`
                 color: #747475;
             }
         }
-    }
-    .creator {
-        padding: 24px;
-        border-radius: 16px;
-        background-color: #fff;
-        .creator-header {
-            display: flex;
-            justify-content: space-between;
-        }
-    }
+    }    
 `
 
 const CardAuction = ({ aution1Img, time, itemTitle, like, avatar, authorName, eth }) => {
@@ -369,6 +384,10 @@ export const Home = () => {
                             <p className="creator-title">Top Creator</p>
                             <p className="creator-see-all">See All</p>
                         </div>
+                        <ol>
+                            <li><Creator name='Michael Jordan' id='@jordan_'/></li>
+                            <li><Creator name='Michael Jordan' id='@jordan_'/></li>
+                        </ol>
                     </div>
 
                 </div>
