@@ -11,6 +11,11 @@ import avatar2 from 'assets/images/avatar2.svg'
 import ethDarkIcon from 'assets/icons/eth-dark.svg'
 import Eth from 'components/Eth';
 
+import React, { Component } from 'react';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a 
+// import ReactDOM from 'react-dom';
+import { Carousel } from 'react-responsive-carousel';
+
 const AppWrapper = styled.div`
     /* background-color: #0cdaf5; */
     
@@ -63,12 +68,23 @@ const AppWrapper = styled.div`
     .mb-32{
         margin-bottom: 32px;
     }
+    .position-relative {
+        position: relative;
+    }
+    .float-right {
+        float: right;
+    }
     .discover{
-        padding: 60px;
+        /* padding: 60px; */
         /* width: 716px; */
-        height: 354px;
+        /* height: 354px; */
         /* background: linear-gradient(75.33deg, rgba(0, 0, 0, 0.2) -10.41%, rgba(0, 0, 0, 0) 62.93%), url(${discoverImg}); */
         /* background: url(${discoverImg}); */
+
+        position: absolute;
+        bottom: 0px;
+        top: 0px;
+
         background: #5429FF;
         border-radius: 12px;
         .title {
@@ -83,6 +99,15 @@ const AppWrapper = styled.div`
         Button {
             font-weight: 700;
         }
+        .demoCarousel{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .discover-create-btn{
+            float: left;
+            margin-left: 30px;
+        }
     }
 
     .t1{
@@ -91,6 +116,9 @@ const AppWrapper = styled.div`
     .t2{
         background-color: blue;
     }
+    /* .bg1{
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    } */
     .auctions-header{
         display: flex;
         align-items: center;
@@ -101,75 +129,6 @@ const AppWrapper = styled.div`
             line-height: 31px;
         }
     }
-    /* .auction-item{
-        background-color: #fff;
-        padding: 12px;
-        border-radius: 16px;
-        margin-bottom: 16px;
-        .auction-item-img {
-            position: relative;
-            .auction-item-time {
-                position: absolute;
-                bottom: 28px;
-                left: 8px;
-            }
-        }
-        img {
-            width: 100%;
-        }
-        .auction-item-info{
-            display: flex; 
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: -24px;
-        }
-        .auction-item-info-title {
-            font-weight: 700;
-            font-size: 24px;
-            line-height: 31px;
-        }
-        .auction-item-info-like {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 21px;
-            color: #747475;
-        }
-        .auction-item-author {
-            display: flex;
-            margin-bottom: -15px;
-        }
-        .auction-item-author-avatar {
-            width: 28px;
-            margin-right: 8px;
-        }
-        .auction-item-author-name {
-            font-weight: 400;
-            font-size: 16px;
-            line-height: 21px;
-            color: #747475;
-        }
-
-        .auction-item-bid {
-            display: flex;
-            justify-content: space-between;
-            .auction-item-eth-title {
-                font-style: normal;
-                font-weight: 700;
-                font-size: 16px;
-                line-height: 21px;
-                color: #747475;
-            }
-        }
-    }
-    .creator {
-        padding: 24px;
-        border-radius: 16px;
-        background-color: #fff;
-        .creator-header {
-            display: flex;
-            justify-content: space-between;
-        }
-    } */
 `
 const StyledCardAuction = styled.div`
     .auction-item{
@@ -243,7 +202,7 @@ const StyledCardAuction = styled.div`
     }
 `
 
-const CardAuction = ({aution1Img, time, itemTitle, like, avatar, authorName, eth}) => {
+const CardAuction = ({ aution1Img, time, itemTitle, like, avatar, authorName, eth }) => {
     return <StyledCardAuction>
         <div className="auction-item">
             <div className="auction-item-img">
@@ -269,11 +228,65 @@ const CardAuction = ({aution1Img, time, itemTitle, like, avatar, authorName, eth
     </StyledCardAuction>
 }
 
+const Slider = styled.div`
+    /* position: relative; */
+    /* .img {
+        position: absolute;
+    } */
+`
+
+class DemoCarousel extends Component {
+    render() {
+        return (
+            <Carousel
+                // autoPlay
+                infiniteLoop
+                showStatus={false}
+                // showIndicators={false}
+                showThumbs={false}
+                showArrows={false}
+            >
+                <Slider>
+                    <div className="img">
+                        <div className="" />
+                        {/* <img src='http://react-responsive-carousel.js.org/assets/6.jpeg' alt="" /> */}
+                        {/* <img src= {discoverImg} alt="" /> */}
+                    </div>
+
+                    <p className="title">Discover, Create and Sell Your Own NFT.</p>
+                    <div className="discover-create-btn">
+                        <Button className="mr-8" width='128px' height='46px'>Discover</Button>
+                        <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button>
+                    </div>
+                    
+                </Slider>
+
+                {/* <Slider>
+                    <div className="img">
+                        <div className="" />
+                    </div>
+
+                    <p className="title">Discover, Create and Sell Your Own NFT.</p>
+                    <div className="discover-create-btn">
+                        <Button className="mr-8" width='128px' height='46px'>Discover</Button>
+                        <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button>
+                    </div>
+                    
+                </Slider> */}
+
+                {/* <div>
+                    <img src='http://react-responsive-carousel.js.org/assets/6.jpeg' alt="" />
+                </div> */}
+            </Carousel>
+        )
+    }
+}
+
 export const Home = () => {
     return (
         <PrimaryLayout>
             <AppWrapper>
-                <Button percent={10}>8.1%</Button>
+                {/* <Button percent={10}>8.1%</Button>
                 <Button textColor="red" percent={-10}>3.2%</Button>
                 <Button width="77px" height="32px" textColor="white" bgColor="#5429FF">Following</Button>
                 <Button width="77px" height="32px" bgColor="rgba(84, 41, 255, 0.1)">Follow</Button>
@@ -283,16 +296,21 @@ export const Home = () => {
                     <Card title="Spending" amount="2.00" percent={8.1}></Card>
                     <Card title="ROI" content="+14.02" percent={-5.1}></Card>
                     <Card title="ROI" content="+14.02" percent={-5.1}></Card>
-                </div>
+                </div> */}
 
-                <div className="row mb-16">
-                    <div className="col col-2-third discover">
-                        <p className="title">Discover, Create and Sell Your Own NFT.</p>
+                <div className="row mb-16 position-relative">
+                    <div className="col col-2-third discover position-absolute">
+                        {/* <p className="title">Discover, Create and Sell Your Own NFT.</p>
                         <Button className="mr-8" width='128px' height='46px'>Discover</Button>
-                        <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button>
+                        <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button> */}
+
+                        <div className='demoCarousel'>
+                            <DemoCarousel />
+
+                        </div>
                     </div>
 
-                    <div className="col col-third">
+                    <div className="col col-third float-right">
                         <div className="row mb-16">
                             <div className="col col-haft">
                                 <Card title="Revenue" amount="5.00" percent={12.3}></Card>
@@ -329,16 +347,16 @@ export const Home = () => {
 
                         <div className="row list-auction">
                             <div className="col col-haft">
-                                <CardAuction aution1Img={aution1Img} time='12 : 03 : 45' itemTitle='Ape In Love' like='21,5K' avatar={avatar1} authorName='@johnti60' eth='9.10'/>
+                                <CardAuction aution1Img={aution1Img} time='12 : 03 : 45' itemTitle='Ape In Love' like='21,5K' avatar={avatar1} authorName='@johnti60' eth='9.10' />
                             </div>
                             <div className="col col-haft">
-                                <CardAuction aution1Img={aution2Img} time='08 : 21 : 23' itemTitle='Smilling Ape' like='21,5K' avatar={avatar2} authorName='@m_alisson' eth='6.12'/>
+                                <CardAuction aution1Img={aution2Img} time='08 : 21 : 23' itemTitle='Smilling Ape' like='21,5K' avatar={avatar2} authorName='@m_alisson' eth='6.12' />
                             </div>
                             <div className="col col-haft">
-                                <CardAuction aution1Img={aution1Img} time='12 : 03 : 45' itemTitle='Ape In Love' like='21,5K' avatar={avatar1} authorName='@johnti60' eth='9.10'/>
+                                <CardAuction aution1Img={aution1Img} time='12 : 03 : 45' itemTitle='Ape In Love' like='21,5K' avatar={avatar1} authorName='@johnti60' eth='9.10' />
                             </div>
                             <div className="col col-haft">
-                                <CardAuction aution1Img={aution2Img} time='08 : 21 : 23' itemTitle='Smilling Ape' like='21,5K' avatar={avatar2} authorName='@m_alisson' eth='6.12'/>
+                                <CardAuction aution1Img={aution2Img} time='08 : 21 : 23' itemTitle='Smilling Ape' like='21,5K' avatar={avatar2} authorName='@m_alisson' eth='6.12' />
                             </div>
 
                         </div>
