@@ -5,6 +5,7 @@ import { Button } from "components/Button"
 const StyledDiv = styled.div`
     display: flex;
     justify-content: space-between;
+    width: 100%;
     .vatavar-info {
         display: flex;
     }
@@ -26,18 +27,19 @@ const StyledDiv = styled.div`
         font-size: 12px;
     }
 `
-export const Creator = ({ name, id, follow, btnHeight, btnWidth }) => {
+export const Creator = ({ name, id, avatar, follow, btnHeight, btnWidth, bgColor, textColor }) => {
     return <StyledDiv>
         <div className="vatavar-info">
 
-            <img src={avatar1} alt="" />
+            <img src={avatar} alt="" />
             <div className="info">
                 <div className="name">{name}</div>
                 <div className="id">{id}</div>
             </div>
         </div>
-
-        <Button children='Follow' bgColor='bgColor' width={btnWidth} height={btnHeight} />
+        <Button children='Follow' bgColor = {follow ? '#5429FF' : bgColor}
+            textColor = {follow ? '#fff': textColor}
+            width={btnWidth} height={btnHeight} />
     </StyledDiv>
 }
 Creator.defaultProps = {

@@ -8,6 +8,7 @@ import aution2Img from 'assets/images/auction2.svg'
 import { TimeButton } from 'components/Button';
 import avatar1 from 'assets/images/avatar.svg'
 import avatar2 from 'assets/images/avatar2.svg'
+import slide1 from 'assets/images/slides/slide1.jpeg'
 import ethDarkIcon from 'assets/icons/eth-dark.svg'
 import Eth from 'components/Eth';
 import Creator from 'components/Creator';
@@ -16,6 +17,13 @@ import React, { Component } from 'react';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a 
 // import ReactDOM from 'react-dom';
 import { Carousel } from 'react-responsive-carousel';
+
+import Creatoravatar1 from 'assets/images/avatars/avatar1.svg'
+import Creatoravatar2 from 'assets/images/avatars/avatar2.svg'
+import Creatoravatar3 from 'assets/images/avatars/avatar3.svg'
+import Creatoravatar4 from 'assets/images/avatars/avatar4.svg'
+import Creatoravatar5 from 'assets/images/avatars/avatar5.svg'
+import Creatoravatar6 from 'assets/images/avatars/avatar6.svg'
 
 const AppWrapper = styled.div`
     /* background-color: #0cdaf5; */
@@ -76,6 +84,10 @@ const AppWrapper = styled.div`
         float: right;
     }
     .discover{
+        /* display: flex;
+        align-items: center; */
+
+
         /* padding: 60px; */
         /* width: 716px; */
         /* height: 354px; */
@@ -83,14 +95,19 @@ const AppWrapper = styled.div`
         /* background: url(${discoverImg}); */
 
         position: absolute;
-        bottom: 0px;
+        /* top: 50%;
+        transform: translateY(-50%); */
+
+        /* top: 50%; */
+        /* height: 100%; */
+        /* bottom: 0px; */
         top: 0px;
 
-        background: #5429FF;
+        /* background: #5429FF; */
         border-radius: 12px;
         .title {
             font-weight: 700;
-            font-size: 54px;
+            font-size: 36px;
             line-height: 120%;
             /* or 65px */
             color: #fff;
@@ -101,9 +118,12 @@ const AppWrapper = styled.div`
             font-weight: 700;
         }
         .demoCarousel{
-            position: absolute;
+
+            /* height: 100%;
+            display: inline-block; */
+            /* position: absolute;
             top: 50%;
-            transform: translateY(-50%);
+            transform: translateY(-50%); */
         }
         .discover-create-btn{
             float: left;
@@ -149,8 +169,19 @@ const AppWrapper = styled.div`
                 color: #747475;
             }
         }
-        ol::marker{
-            color: hotpink;
+        ol{
+            padding-inline-start: 0px;
+            counter-reset: li;
+        }
+        li {
+            list-style-type: none;
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        li::before {
+            content: counter(li);
+            counter-increment: li;
         }
     }
 `
@@ -265,18 +296,19 @@ class DemoCarousel extends Component {
                     <div className="img">
                         <div className="" />
                         {/* <img src='http://react-responsive-carousel.js.org/assets/6.jpeg' alt="" /> */}
-                        {/* <img src= {discoverImg} alt="" /> */}
+                        <img src={discoverImg} alt="" />
+                        {/* <img src={slide1}/> */}
                     </div>
 
-                    <p className="title">Discover, Create and Sell Your Own NFT.</p>
+                    {/* <p className="title">Discover, Create and Sell Your Own NFT.</p>
                     <div className="discover-create-btn">
                         <Button className="mr-8" width='128px' height='46px'>Discover</Button>
                         <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button>
-                    </div>
-                    
+                    </div> */}
+
                 </Slider>
 
-                {/* <Slider>
+                <Slider>
                     <div className="img">
                         <div className="" />
                     </div>
@@ -286,8 +318,8 @@ class DemoCarousel extends Component {
                         <Button className="mr-8" width='128px' height='46px'>Discover</Button>
                         <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button>
                     </div>
-                    
-                </Slider> */}
+
+                </Slider>
 
                 {/* <div>
                     <img src='http://react-responsive-carousel.js.org/assets/6.jpeg' alt="" />
@@ -314,12 +346,16 @@ export const Home = () => {
                 </div> */}
 
                 <div className="row mb-16 position-relative">
-                    <div className="col col-2-third discover position-absolute">
+                    <div className="col col-2-third discover">
                         {/* <p className="title">Discover, Create and Sell Your Own NFT.</p>
                         <Button className="mr-8" width='128px' height='46px'>Discover</Button>
                         <Button width='128px' height='46px' bgColor='transparent' textColor='#fff' boderColor='#fff'>Create</Button> */}
 
                         <div className='demoCarousel'>
+                            {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
+                            {/* Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodoconsequat. Duis aute irure dolor in reprehenderit in voluptate velit essecillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat nonproident, sunt in culpa qui officia deserunt mollit anim id est laborum. */}
                             <DemoCarousel />
 
                         </div>
@@ -384,9 +420,14 @@ export const Home = () => {
                             <p className="creator-title">Top Creator</p>
                             <p className="creator-see-all">See All</p>
                         </div>
+
                         <ol>
-                            <li><Creator name='Michael Jordan' id='@jordan_'/></li>
-                            <li><Creator name='Michael Jordan' id='@jordan_'/></li>
+                            <li><Creator name='Michael Jordan' id='@jordan_' avatar = {Creatoravatar1}/></li>
+                            <li><Creator name='John Tibao' id='@johnti60' avatar={Creatoravatar2} follow={true}/></li>
+                            <li><Creator name='Teressa' id='@teressa' avatar={Creatoravatar3} /></li>
+                            <li><Creator name='Johan Hawn' id='@j_hawn' avatar={Creatoravatar4} follow={true} /></li>
+                            <li><Creator name='Maria Alisson' id='@m_alisson' avatar={Creatoravatar5} /></li>
+                            <li><Creator name='Sam Erricson' id='@erricsonsam' avatar={Creatoravatar6} /></li>
                         </ol>
                     </div>
 
